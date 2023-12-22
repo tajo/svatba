@@ -1,0 +1,535 @@
+<html>
+  <head>
+    <title>Svatba Aneta + Libor</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      body,
+      html {
+        background-color: black;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+      #slideshow {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: contain; /* Ensure the entire image is visible */
+        background-repeat: no-repeat; /* Do not repeat the image */
+        background-position: center; /* Center the image */
+        width: 100%; /* Full width of the parent */
+        height: 100%; /* Full height of the parent */
+      }
+      .container {
+        z-index: 10;
+        position: relative;
+        width: 100%; /* Full width of the parent element */
+        height: 100vh; /* Full height of the viewport */
+      }
+
+      .centered-button {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        font-size: 32px;
+        padding: 16px 32px;
+        transform: translate(-50%, -50%);
+      }
+    </style>
+    <script>
+      const photos = [
+        {
+          src: "6f2bc32efbdcad28278d.jpg",
+          width: 1620,
+          height: 1080,
+        },
+        {
+          src: "ecee9c07d26914c21892.jpg",
+          width: 1618,
+          height: 1080,
+        },
+        {
+          src: "ed93efc39385dad9e836.jpg",
+          width: 1618,
+          height: 1080,
+        },
+        {
+          src: "d509bc0fc8347a107e2f.jpg",
+          width: 1620,
+          height: 1080,
+        },
+        {
+          src: "a6c9f06609d465a406ae.jpg",
+          width: 1620,
+          height: 1080,
+        },
+        {
+          src: "e9442d2e9fb7c858ead9.jpg",
+          width: 1620,
+          height: 1080,
+        },
+        {
+          src: "72aa7e161d3871ba549e.jpg",
+          width: 1620,
+          height: 1080,
+        },
+        {
+          src: "7e729ee5a97c85aaf079.jpg",
+          width: 1620,
+          height: 1080,
+        },
+        {
+          src: "76e0b45516ea3736c055.jpg",
+          width: 1620,
+          height: 1080,
+        },
+        {
+          src: "de7720e3a856241899f8.jpg",
+          width: 1620,
+          height: 1080,
+        },
+        {
+          src: "9f402d60db7d4621d6f3.jpg",
+          width: 1620,
+          height: 1080,
+        },
+        {
+          src: "56f0bd6cec47fd0b0ed0.jpg",
+          width: 1621,
+          height: 1080,
+        },
+        {
+          src: "b0d6c4cef1a8d5e2e210.jpg",
+          width: 1618,
+          height: 1080,
+        },
+        {
+          src: "6a4f5302a0264ce758d8.jpg",
+          width: 1620,
+          height: 1080,
+        },
+        {
+          src: "72c9c06e3f114cd5298c.jpg",
+          width: 1620,
+          height: 1080,
+        },
+        {
+          src: "d875dad1995ae08e6906.jpg",
+          width: 1620,
+          height: 1080,
+        },
+        {
+          src: "fd2fd29eaad9cb9fe584.jpg",
+          width: 1620,
+          height: 1080,
+        },
+        {
+          src: "a6db18ada5e655c5eaf9.jpg",
+          width: 1620,
+          height: 1080,
+        },
+        {
+          src: "6258df5a360c4e81ab80.jpg",
+          width: 1620,
+          height: 1080,
+        },
+        {
+          src: "1cd14b01bfa83b9c6a67.jpg",
+          width: 1620,
+          height: 1080,
+        },
+        {
+          src: "53318e30d9914978682f.jpg",
+          width: 1620,
+          height: 1080,
+        },
+        {
+          src: "052e0c8901b668eb44be.jpg",
+          width: 1620,
+          height: 1080,
+        },
+        {
+          src: "e04185c70fc48071ecb6.jpg",
+          width: 1620,
+          height: 1080,
+        },
+        {
+          src: "8568ab1a6bbf63a846c9.jpg",
+          width: 1620,
+          height: 1080,
+        },
+        {
+          src: "51d663da605bbcc826b9.jpg",
+          width: 1620,
+          height: 1080,
+        },
+        {
+          src: "0844c0f80f303109a2e3.jpg",
+          width: 1620,
+          height: 1080,
+        },
+        {
+          src: "1ce9edf8ecfbb679ecef.jpg",
+          width: 1620,
+          height: 1080,
+        },
+        {
+          src: "85d08da97c12bc3aebe7.jpg",
+          width: 1620,
+          height: 1080,
+        },
+        {
+          src: "a93cc9bb3d808867745a.jpg",
+          width: 1620,
+          height: 1080,
+        },
+        {
+          src: "21cf891eab513b7f5596.jpg",
+          width: 1620,
+          height: 1080,
+        },
+        {
+          src: "b2f624dd628ec32055d1.jpg",
+          width: 1621,
+          height: 1080,
+        },
+        {
+          src: "86724c310a4f28f444a2.jpg",
+          width: 1620,
+          height: 1080,
+        },
+        {
+          src: "23cfdb7cef5133f16c2e.jpg",
+          width: 1620,
+          height: 1080,
+        },
+        {
+          src: "95b9871995d5cd6c1f6c.jpg",
+          width: 1620,
+          height: 1080,
+        },
+        {
+          src: "412ca99227f3e32cd67a.jpg",
+          width: 1620,
+          height: 1080,
+        },
+        {
+          src: "d61a373a3ea31e34af32.jpg",
+          width: 1620,
+          height: 1080,
+        },
+        {
+          src: "5b508669def7ca507ee5.jpg",
+          width: 1620,
+          height: 1080,
+        },
+        {
+          src: "6285bc3eb3cc1c5860c6.jpg",
+          width: 1620,
+          height: 1080,
+        },
+        {
+          src: "fce71c7555cf02b866d6.jpg",
+          width: 1620,
+          height: 1080,
+        },
+        {
+          src: "5b0d3615beb89d723a67.jpg",
+          width: 1618,
+          height: 1080,
+        },
+        {
+          src: "9eba20ce531eea733f06.jpg",
+          width: 1620,
+          height: 1080,
+        },
+        {
+          src: "b3f9b5691fb2a4f5f4b9.jpg",
+          width: 1620,
+          height: 1080,
+        },
+        {
+          src: "59011b159fbed128149f.jpg",
+          width: 1618,
+          height: 1080,
+        },
+        {
+          src: "5680a1c00288cbb55fe5.jpg",
+          width: 1620,
+          height: 1080,
+        },
+        {
+          src: "8de6ea343bf63f72219d.jpg",
+          width: 1620,
+          height: 1080,
+        },
+        {
+          src: "51ce7012236047f0c269.jpg",
+          width: 1620,
+          height: 1080,
+        },
+        {
+          src: "f62c4cd6a4cad734618a.jpg",
+          width: 1620,
+          height: 1080,
+        },
+        {
+          src: "3da18355a374599baa73.jpg",
+          width: 1620,
+          height: 1080,
+        },
+        {
+          src: "47fb26dda48201cd52bf.jpg",
+          width: 720,
+          height: 1080,
+        },
+        {
+          src: "866e75d7c97c9d6182e6.jpg",
+          width: 1620,
+          height: 1080,
+        },
+        {
+          src: "838295ec57ac66a733ef.jpg",
+          width: 1620,
+          height: 1080,
+        },
+        {
+          src: "4b7bb906ee34c6b4c022.jpg",
+          width: 1620,
+          height: 1080,
+        },
+        {
+          src: "5130cf55a83c2c5628fa.jpg",
+          width: 720,
+          height: 1080,
+        },
+        {
+          src: "53dc0891b20611b64720.jpg",
+          width: 1620,
+          height: 1080,
+        },
+        {
+          src: "307d416e37a418fa0906.jpg",
+          width: 1620,
+          height: 1080,
+        },
+        {
+          src: "4fcc0f45c78d3a94517a.jpg",
+          width: 1620,
+          height: 1080,
+        },
+        {
+          src: "a44356fee03651f323a4.jpg",
+          width: 1620,
+          height: 1080,
+        },
+        {
+          src: "1e182e7d61dff95984f8.jpg",
+          width: 1620,
+          height: 1080,
+        },
+        {
+          src: "c74f98c81d61aa20c319.jpg",
+          width: 1620,
+          height: 1080,
+        },
+        {
+          src: "0dc238c536588e4b7fdf.jpg",
+          width: 1620,
+          height: 1080,
+        },
+        {
+          src: "c97eaff6d98fdef1abee.jpg",
+          width: 1620,
+          height: 1080,
+        },
+        {
+          src: "397525047457adc60b56.jpg",
+          width: 1620,
+          height: 1080,
+        },
+        {
+          src: "77218c196199bf2954c6.jpg",
+          width: 1620,
+          height: 1080,
+        },
+        {
+          src: "7ee5ffcea714f211563f.jpg",
+          width: 1620,
+          height: 1080,
+        },
+        {
+          src: "0caa56331d094b965726.jpg",
+          width: 1618,
+          height: 1080,
+        },
+        {
+          src: "f88088f04b5a98f887e7.jpg",
+          width: 1620,
+          height: 1080,
+        },
+        {
+          src: "94aea88b0e2f999e8b99.jpg",
+          width: 1620,
+          height: 1080,
+        },
+        {
+          src: "9e9982009a4f78cadf3c.jpg",
+          width: 1620,
+          height: 1080,
+        },
+        {
+          src: "f4e0fba14c561365a50f.jpg",
+          width: 720,
+          height: 1080,
+        },
+        {
+          src: "6d0cceb6afe8e975d868.jpg",
+          width: 720,
+          height: 1080,
+        },
+        {
+          src: "8a22a3460a2b8e7674ae.jpg",
+          width: 1620,
+          height: 1080,
+        },
+        {
+          src: "1f4b14770abb2e3f2110.jpg",
+          width: 1620,
+          height: 1080,
+        },
+        {
+          src: "95cdc1b6368d657a5087.jpg",
+          width: 1620,
+          height: 1080,
+        },
+        {
+          src: "7c33041962284cb8c916.jpg",
+          width: 1620,
+          height: 1080,
+        },
+        {
+          src: "bc2d0fbba68aa0bc45e5.jpg",
+          width: 1620,
+          height: 1080,
+        },
+        {
+          src: "f7ac421010b2e4c05b3e.jpg",
+          width: 1621,
+          height: 1080,
+        },
+        {
+          src: "2213aa540c41a3735796.jpg",
+          width: 1620,
+          height: 1080,
+        },
+        {
+          src: "a71e95dc107fa6625369.jpg",
+          width: 1620,
+          height: 1080,
+        },
+        {
+          src: "050e8610ee0acd322e1d.jpg",
+          width: 1620,
+          height: 1080,
+        },
+        {
+          src: "8796592318f70de636b0.jpg",
+          width: 1620,
+          height: 1080,
+        },
+        {
+          src: "534d8600391250799577.jpg",
+          width: 1620,
+          height: 1080,
+        },
+        {
+          src: "fad0a992b53ae4ede63c.jpg",
+          width: 1620,
+          height: 1080,
+        },
+        {
+          src: "05350ce1c51ecbef0a42.jpg",
+          width: 1620,
+          height: 1080,
+        },
+        {
+          src: "704eee0c84a11bc9332f.jpg",
+          width: 1620,
+          height: 1080,
+        },
+        {
+          src: "c8778c2363f3d4bf8a6c.jpg",
+          width: 1620,
+          height: 1080,
+        },
+        {
+          src: "a24955b8a942133d1181.jpg",
+          width: 720,
+          height: 1080,
+        },
+      ];
+    </script>
+  </head>
+  <body>
+    <body>
+      <div class="container" id="startButton">
+        <button class="centered-button">Přehrát</button>
+      </div>
+      <div id="slideshow"></div>
+      <audio id="background-music" loop>
+        <source src="./for-you-by-toxic-he.mp3" type="audio/mpeg" />
+        <source src="./for-you-by-toxic-he.mp3" type="audio/ogg" />
+        Your browser does not support the audio element.
+      </audio>
+      <script>
+        let currentIndex = 0;
+        let imagesLoaded = 0;
+
+        function preloadImages() {
+          for (let i = 0; i < photos.length; i++) {
+            const img = new Image();
+            img.onload = imageLoaded;
+            img.src = `./images/${photos[i].src}`;
+          }
+        }
+
+        function imageLoaded() {
+          imagesLoaded++;
+          if (imagesLoaded === photos.length) {
+            startSlideshow();
+          }
+        }
+
+        function changeImage() {
+          const slideshowDiv = document.getElementById("slideshow");
+          slideshowDiv.style.backgroundImage = `url('./images/${photos[currentIndex].src}')`;
+
+          currentIndex++;
+          if (currentIndex >= photos.length) {
+            currentIndex = 0;
+          }
+          setTimeout(changeImage, 2000); // Change image every 5 seconds
+        }
+
+        function startSlideshow() {
+          changeImage();
+          const backgroundMusic = document.getElementById("background-music");
+          backgroundMusic.play();
+        }
+
+        document
+          .getElementById("startButton")
+          .addEventListener("click", function () {
+            preloadImages();
+            this.remove(); // Removes the start button after clicking
+          });
+      </script>
+    </body>
+  </body>
+</html>
